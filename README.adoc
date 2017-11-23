@@ -1,0 +1,20 @@
+= potic-token-renewer
+:linkattrs:
+
+Service for renewing auth tokens.
+
+== Travis job
+
+image:https://travis-ci.org/potic/potic-token-renewer.svg?branch=develop["Travis job", link="https://travis-ci.org/potic/potic-token-renewer"]
+
+== Docker repository
+
+https://hub.docker.com/r/potic/potic-token-renewer/
+
+== Documentation
+
+link:src/deploy/deploy.sh[HOWTO: start service as docker container, window="_blank"]
+
+link:src/docs/configuration-parameters.adoc[Service configuration parameters]
+
+link:src/docs/environments.adoc[Environments]
