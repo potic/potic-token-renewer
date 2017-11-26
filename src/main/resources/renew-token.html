@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <script src="https://cdn.auth0.com/js/auth0/8.8/auth0.min.js"></script>
         <script>
-            console.log(`POST message to parent (${parent}): hash=${window.location.hash}`);
+            console.log(`POST message to parent: hash=${window.location.hash}`);
             try {
               parent.postMessage({
                   hash: window.location.hash,
