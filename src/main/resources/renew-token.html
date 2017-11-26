@@ -4,12 +4,22 @@
         <meta charset="utf-8">
         <script src="https://cdn.auth0.com/js/auth0/8.8/auth0.min.js"></script>
         <script>
+          var webAuth = new auth0.WebAuth({
+            domain: '__AUTH0_DOMAIN__',
+            clientID: '__AUTH0_CLIENT_ID__',
+            scope: '__AUTH0_SCOPE__',
+            responseType: '__AUTH0_RESPONSE__',
+            redirectUri: '__CALLBACK_URL__'
+          });
+        </script>
+        <script>
             console.log(`POST message to parent: hash=${window.location.hash}`);
             try {
-              parent.postMessage({
-                  hash: window.location.hash,
-                  type: 'auth0:silent-authentication'
-              }, "__CALLBACK_URL__");
+              webAuth.parseHash(window.location.hash, function (err, response) {
+                console.log(`Parse result: ${err || response}`);
+                parent.postMessage(err || response, "__CALLBACK_URL__");
+                console.log(`Parse finished`);
+              });
               console.log(`Finished successfully`);
             } catch (e) {
               console.log(`Failed: ${e}`);
