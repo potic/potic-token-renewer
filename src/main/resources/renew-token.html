@@ -13,15 +13,17 @@
           });
         </script>
         <script>
-            console.log(`Parsing hash=${window.location.hash}`);
+            console.log(`Parsing ${window.location.hash}`);
             try {
               webAuth.parseHash(window.location.hash, function (err, response) {
                 if (err) {
                   console.log(`Could not parse hash: ${err.error}`);
+                  parent.postMessage(err, "__CALLBACK_URL__");
                 } else {
-                  console.log(`Successfully parsed hash: ${response}`);
+                  console.log(`Successfully parsed hash`);
+                  console.log(response);
+                  parent.postMessage(response, "__CALLBACK_URL__");
                 }
-                parent.postMessage(err || response, "__CALLBACK_URL__");
               });
               console.log(`Finished successfully`);
             } catch (e) {
