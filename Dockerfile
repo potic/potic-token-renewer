@@ -8,7 +8,7 @@ RUN unzip /usr/src/potic-token-renewer/potic-token-renewer-*.zip -d /usr/app/ &&
 
 WORKDIR /usr/app/potic-token-renewer
 
-EXPOSE 8080
+EXPOSE 5050
 ENV ENVIRONMENT_NAME test
 ENTRYPOINT [ "sh", "-c", "./bin/potic-token-renewer --spring.profiles.active=$ENVIRONMENT_NAME" ]
 CMD []
