@@ -13,12 +13,15 @@
           });
         </script>
         <script>
-            console.log(`POST message to parent: hash=${window.location.hash}`);
+            console.log(`Parsing hash=${window.location.hash}`);
             try {
               webAuth.parseHash(window.location.hash, function (err, response) {
-                console.log(`Parse result: ${err || response}`);
+                if (err) {
+                  console.log(`Could not parse hash: ${err.error}`);
+                } else {
+                  console.log(`Successfully parsed hash: ${response}`);
+                }
                 parent.postMessage(err || response, "__CALLBACK_URL__");
-                console.log(`Parse finished`);
               });
               console.log(`Finished successfully`);
             } catch (e) {
