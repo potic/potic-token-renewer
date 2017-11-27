@@ -3,7 +3,6 @@
     <head>
         <meta charset="utf-8">
         <script>
-            console.log(`Sending hash to parent: ${window.location.hash}`);
             parent.postMessage(window.location.hash, "__CALLBACK_URL__");
         </script>
     </head>
