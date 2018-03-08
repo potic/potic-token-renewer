@@ -21,7 +21,7 @@ warn "Pulling latest docker image..."
 docker pull potic/potic-token-renewer:$TAG_TO_DEPLOY
 
 warn "Starting docker image..."
-docker run -dit --name potic-token-renewer -e LOG_PATH=/mnt/logs -v /mnt/logs:/mnt/logs -e LOGZIO_TOKEN=$LOGZIO_TOKEN -p 40407:5050 potic/potic-token-renewer:$TAG_TO_DEPLOY
+docker run -dit --name potic-token-renewer --restart on-failure -e LOG_PATH=/mnt/logs -v /mnt/logs:/mnt/logs -e LOGZIO_TOKEN=$LOGZIO_TOKEN -p 40407:5050 potic/potic-token-renewer:$TAG_TO_DEPLOY
 
 warn "Currently running docker images"
 docker ps -a
